@@ -26,11 +26,15 @@ export default function About() {
               {/* Offset shadow card */}
               <div className="absolute inset-0 bg-gradient-to-br from-pink-300 to-violet-300 rounded-3xl translate-x-3 translate-y-3 opacity-40" />
               {/* Main card */}
-              <div className="relative w-full h-full bg-gradient-to-br from-pink-100 to-violet-100 rounded-3xl flex items-center justify-center overflow-hidden">
-                {/* Decorative circles */}
-                <div className="absolute -top-8 -right-8 w-32 h-32 bg-pink-200 rounded-full opacity-60" />
-                <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-violet-200 rounded-full opacity-60" />
-                <span className="text-7xl z-10">🎨</span>
+              <div className="relative w-full h-full bg-gradient-to-br from-pink-100 to-violet-100 rounded-3xl overflow-hidden shadow-xl">
+                {/* Profile image */}
+                <img
+                  src="/profile.jpg"
+                  alt="Lee Jia Lu"
+                  className="w-full h-full object-cover rounded-3xl"
+                />
+                {/* Subtle overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10 pointer-events-none rounded-3xl" />
               </div>
               {/* Floating chips */}
               <div className="absolute -top-5 -right-5 bg-white rounded-xl px-3 py-2 shadow-lg text-sm font-semibold text-violet-500 border border-violet-100">

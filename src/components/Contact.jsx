@@ -92,7 +92,7 @@ export default function Contact() {
                 <p className="text-xs text-slate-400">Lecturer · Ngee Ann Polytechnic</p>
               </div>
               <span className="ml-auto bg-slate-100 text-slate-500 text-xs font-semibold px-3 py-1 rounded-full">
-                Reference
+                Referral
               </span>
             </div>
             <div className="flex flex-wrap gap-3">

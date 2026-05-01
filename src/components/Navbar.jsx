@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react'
 
 const navLinks = [
+  { href: '#portfolio', label: 'Portfolio' },
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
   { href: '#experience', label: 'Experience' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#cocurricular', label: 'Activities' },
   { href: '#education', label: 'Education' },
+  { href: '#cocurricular', label: 'Activities' },
   { href: '#certificates', label: 'Certificates' },
-  { href: '#portfolio', label: 'Portfolio' },
   { href: '#contact', label: 'Contact' },
 ]
 

@@ -3,7 +3,6 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
-import Projects from './components/Projects'
 import CoCurricular from './components/CoCurricular'
 import Education from './components/Education'
 import Certificates from './components/Certificates'
@@ -19,7 +18,6 @@ export default function App() {
       <About />
       <Skills />
       <Experience />
-      <Projects />
       <CoCurricular />
       <Education />
       <Certificates />

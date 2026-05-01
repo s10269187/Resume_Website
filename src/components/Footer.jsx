@@ -14,7 +14,7 @@ export default function Footer() {
 
         {/* Nav links */}
         <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-400">
-          {['about', 'skills', 'experience', 'projects', 'cocurricular', 'education', 'certificates', 'portfolio', 'contact'].map(s => (
+          {['portfolio', 'about', 'skills', 'experience', 'education', 'cocurricular', 'certificates', 'contact'].map(s => (
             <button
               key={s}
               onClick={() => document.querySelector(`#${s}`)?.scrollIntoView({ behavior: 'smooth' })}

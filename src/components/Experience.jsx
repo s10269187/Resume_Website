@@ -14,6 +14,7 @@ const experiences = [
       'Created clean, consistent product visuals — background removal, colour correction, and layout adjustments.',
       'Maintained accuracy and attention to detail across both digital content and physical stock handling.',
     ],
+    skills: ['Photo Editing', 'Adobe Photoshop', 'Canva', 'Attention to Detail', 'Stock Management'],
   },
   {
     company: 'Hai Di Lao Hot Pot',
@@ -28,6 +29,7 @@ const experiences = [
       'Communicated effectively with customers, colleagues, and kitchen staff to ensure accurate and timely order fulfilment.',
       'Maintained cleanliness and organisation of dining areas while upholding hygiene and service standards.',
     ],
+    skills: ['Customer Service', 'Communication', 'Teamwork', 'Time Management', 'Multitasking'],
   },
   {
     company: 'Shopee',
@@ -43,6 +45,7 @@ const experiences = [
       'Built confidence in public speaking and strengthened persuasive communication skills.',
       'Analysed audience engagement and adapted presentation styles to improve performance.',
     ],
+    skills: ['Public Speaking', 'Persuasion', 'Live Streaming', 'Sales', 'Analytics'],
   },
 ]
 
@@ -87,7 +90,7 @@ export default function Experience() {
                       {exp.period}
                     </span>
                   </div>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 mb-4">
                     {exp.points.map((pt, j) => (
                       <li key={j} className="flex items-start gap-2 text-slate-600 text-sm leading-relaxed">
                         <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${exp.dot} flex-shrink-0`} />
@@ -95,6 +98,13 @@ export default function Experience() {
                       </li>
                     ))}
                   </ul>
+                  <div className="flex flex-wrap gap-2">
+                    {exp.skills.map(skill => (
+                      <span key={skill} className={`bg-gradient-to-r ${exp.color} text-white text-xs font-semibold px-3 py-1 rounded-full`}>
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

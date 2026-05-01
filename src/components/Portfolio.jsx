@@ -168,7 +168,7 @@ export default function Portfolio() {
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeader
           title="Portfolio"
-          subtitle="Explore my projects and creative works"
+          subtitle="A look at my past works and projects"
           gradient="indigo"
         />
 

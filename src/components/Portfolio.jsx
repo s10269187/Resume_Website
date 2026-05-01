@@ -1,5 +1,7 @@
 import SectionHeader from './SectionHeader'
 
+// To add a YouTube video: upload to YouTube, then paste the video ID here.
+// e.g. for https://www.youtube.com/watch?v=dQw4w9WgXcQ  →  youtubeId: 'dQw4w9WgXcQ'
 const portfolioProjects = [
   {
     id: 1,
@@ -19,7 +21,7 @@ const portfolioProjects = [
       'Focus: Educational awareness & local immersion',
     ],
     technologies: ['Unity', 'C#', '3D Modeling', 'Jira'],
-    videoFile: '/videos/STLD_ACursedWish_Walkthrough.mp4',
+    youtubeId: '',
     collaboration: 'Singapore Police Force (SPF)',
   },
   {
@@ -42,7 +44,7 @@ const portfolioProjects = [
       'Performance tracking website with leaderboard',
     ],
     technologies: ['Unity', 'VR', 'Autodesk Maya', 'Adobe Substance Painter', 'Figma', 'Web Dev'],
-    videoFile: '/videos/PatternOfThought_Playtest_VR.mkv',
+    youtubeId: '',
     collaboration: 'Institute of Mental Health (IMH)',
   },
   {
@@ -63,7 +65,7 @@ const portfolioProjects = [
       'User-friendly checkout process',
     ],
     technologies: ['Web Development', 'Autodesk Maya', 'Figma', 'E-Commerce'],
-    videoFile: '/videos/AprilSonata.mp4',
+    youtubeId: '',
   },
   {
     id: 4,
@@ -74,7 +76,7 @@ const portfolioProjects = [
     bg: 'from-amber-50 to-yellow-50',
     border: 'border-amber-200',
     description:
-      'A mobile game engaging users with Singapore\'s cultural heritage through collecting and crafting traditional snacks.',
+      "A mobile game engaging users with Singapore's cultural heritage through collecting and crafting traditional snacks.",
     details: [
       'Built with Unity Engine',
       'Crafting system for traditional treats (Kueh Bangkit, Iced Gems)',
@@ -84,7 +86,7 @@ const portfolioProjects = [
       'Interactive learning about local flavours',
     ],
     technologies: ['Unity', 'C#', 'Game Design', 'Mobile Development'],
-    videoFile: '/videos/Heritagebites.mp4',
+    youtubeId: '',
   },
   {
     id: 5,
@@ -95,7 +97,7 @@ const portfolioProjects = [
     bg: 'from-indigo-50 to-blue-50',
     border: 'border-indigo-200',
     description:
-      'A physical game controller using Makey Makey, adapting the classic two-player game into a multiplayer experience with custom-built tangible interface.',
+      'A physical game controller using Makey Makey, adapting the classic two-player game into a multiplayer experience with a custom-built tangible interface.',
     details: [
       'Makey Makey-based custom controller',
       'Alternative input methods exploration',
@@ -105,7 +107,7 @@ const portfolioProjects = [
       'Multiplayer gameplay mechanics',
     ],
     technologies: ['Makey Makey', 'Physical Computing', 'UX Design', 'Game Mechanics'],
-    videoFile: '/videos/Fireboy Watergirl.mp4',
+    youtubeId: '',
   },
   {
     id: 6,
@@ -126,7 +128,7 @@ const portfolioProjects = [
       'User-centered design principles',
     ],
     technologies: ['Figma', 'UI/UX Design', 'Mobile Design', 'Wearable Design'],
-    videoFile: '/videos/UIUX Fitness app.mp4',
+    youtubeId: '',
   },
   {
     id: 7,
@@ -148,9 +150,31 @@ const portfolioProjects = [
       'Positive environmental impact design',
     ],
     technologies: ['Figma', 'Gamification', 'UI/UX Design', 'Mobile App'],
-    videoFile: '/videos/Recycling app.mp4',
+    youtubeId: '',
   },
 ]
+
+function VideoEmbed({ youtubeId, gradient, icon }) {
+  if (youtubeId) {
+    return (
+      <div className="relative w-full aspect-video bg-black overflow-hidden">
+        <iframe
+          src={`https://www.youtube.com/embed/${youtubeId}`}
+          title="Project video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="w-full h-full"
+        />
+      </div>
+    )
+  }
+  return (
+    <div className={`relative w-full aspect-video bg-gradient-to-br ${gradient} flex flex-col items-center justify-center gap-3`}>
+      <span className="text-5xl">{icon}</span>
+      <p className="text-white/80 text-xs font-medium">Video coming soon</p>
+    </div>
+  )
+}
 
 export default function Portfolio() {
   return (
@@ -168,27 +192,13 @@ export default function Portfolio() {
               key={project.id}
               className={`bg-gradient-to-br ${project.bg} border ${project.border} rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col`}
             >
-              {/* Video player */}
-              <div className="relative w-full aspect-video bg-black overflow-hidden group">
-                <video
-                  controls
-                  className="w-full h-full object-cover"
-                  controlsList="nodownload"
-                >
-                  <source src={project.videoFile} type={project.videoFile.endsWith('.mkv') ? 'video/x-matroska' : 'video/mp4'} />
-                  <p className="text-white p-4">Your browser doesn't support HTML5 video.</p>
-                </video>
-                {/* Play indicator */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center">
-                    <span className="text-2xl">▶</span>
-                  </div>
-                </div>
-              </div>
+              <VideoEmbed
+                youtubeId={project.youtubeId}
+                gradient={project.gradient}
+                icon={project.icon}
+              />
 
-              {/* Content */}
               <div className="p-6 flex flex-col flex-grow">
-                {/* Header */}
                 <div className="flex items-start gap-3 mb-3">
                   <div
                     className={`w-10 h-10 rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center text-lg flex-shrink-0`}
@@ -203,10 +213,8 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Description */}
                 <p className="text-slate-600 text-sm leading-relaxed mb-4">{project.description}</p>
 
-                {/* Details */}
                 <ul className="space-y-1.5 mb-4 flex-grow">
                   {project.details.map((detail, i) => (
                     <li key={i} className="flex items-start gap-2 text-xs text-slate-600">
@@ -216,7 +224,6 @@ export default function Portfolio() {
                   ))}
                 </ul>
 
-                {/* Collaboration */}
                 {project.collaboration && (
                   <div className="mb-4 p-3 bg-white/60 rounded-lg border border-slate-200">
                     <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
@@ -226,7 +233,6 @@ export default function Portfolio() {
                   </div>
                 )}
 
-                {/* Technologies */}
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map(tech => (
                     <span

@@ -1,7 +1,6 @@
 import SectionHeader from './SectionHeader'
 
-// To add a YouTube video: upload to YouTube, then paste the video ID here.
-// e.g. for https://www.youtube.com/watch?v=dQw4w9WgXcQ  →  youtubeId: 'dQw4w9WgXcQ'
+// Videos hosted on Cloudinary
 const portfolioProjects = [
   {
     id: 1,
@@ -21,7 +20,7 @@ const portfolioProjects = [
       'Focus: Educational awareness & local immersion',
     ],
     technologies: ['Unity', 'C#', '3D Modeling', 'Jira'],
-    youtubeId: '',
+    videoUrl: 'https://res.cloudinary.com/druqtalox/video/upload/v1777625114/portfolio/a-cursed-wish.mp4',
     collaboration: 'Singapore Police Force (SPF)',
   },
   {
@@ -44,7 +43,7 @@ const portfolioProjects = [
       'Performance tracking website with leaderboard',
     ],
     technologies: ['Unity', 'VR', 'Autodesk Maya', 'Adobe Substance Painter', 'Figma', 'Web Dev'],
-    youtubeId: '',
+    videoUrl: 'https://res.cloudinary.com/druqtalox/video/upload/v1777625138/portfolio/pattern-of-thought.mp4',
     collaboration: 'Institute of Mental Health (IMH)',
   },
   {
@@ -65,7 +64,7 @@ const portfolioProjects = [
       'User-friendly checkout process',
     ],
     technologies: ['Web Development', 'Autodesk Maya', 'Figma', 'E-Commerce'],
-    youtubeId: '',
+    videoUrl: 'https://res.cloudinary.com/druqtalox/video/upload/v1777625091/portfolio/april-sonata.mp4',
   },
   {
     id: 4,
@@ -86,7 +85,7 @@ const portfolioProjects = [
       'Interactive learning about local flavours',
     ],
     technologies: ['Unity', 'C#', 'Game Design', 'Mobile Development'],
-    youtubeId: '',
+    videoUrl: 'https://res.cloudinary.com/druqtalox/video/upload/v1777624116/portfolio/heritage-bites.mp4',
   },
   {
     id: 5,
@@ -107,7 +106,7 @@ const portfolioProjects = [
       'Multiplayer gameplay mechanics',
     ],
     technologies: ['Makey Makey', 'Physical Computing', 'UX Design', 'Game Mechanics'],
-    youtubeId: '',
+    videoUrl: 'https://res.cloudinary.com/druqtalox/video/upload/v1777625069/portfolio/fireboy-watergirl.mp4',
   },
   {
     id: 6,
@@ -128,7 +127,7 @@ const portfolioProjects = [
       'User-centered design principles',
     ],
     technologies: ['Figma', 'UI/UX Design', 'Mobile Design', 'Wearable Design'],
-    youtubeId: '',
+    videoUrl: 'https://res.cloudinary.com/druqtalox/video/upload/v1777624105/portfolio/fitness-tracker.mp4',
   },
   {
     id: 7,
@@ -150,28 +149,29 @@ const portfolioProjects = [
       'Positive environmental impact design',
     ],
     technologies: ['Figma', 'Gamification', 'UI/UX Design', 'Mobile App'],
-    youtubeId: '',
+    videoUrl: 'https://res.cloudinary.com/druqtalox/video/upload/v1777625048/portfolio/recycling-app.mp4',
   },
 ]
 
-function VideoEmbed({ youtubeId, gradient, icon }) {
-  if (youtubeId) {
+function VideoEmbed({ videoUrl, gradient, icon, title }) {
+  if (videoUrl) {
     return (
       <div className="relative w-full aspect-video bg-black overflow-hidden">
-        <iframe
-          src={`https://www.youtube.com/embed/${youtubeId}`}
-          title="Project video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="w-full h-full"
-        />
+        <video
+          controls
+          preload="metadata"
+          className="w-full h-full object-cover"
+          controlsList="nodownload"
+        >
+          <source src={videoUrl} type="video/mp4" />
+        </video>
       </div>
     )
   }
   return (
-    <div className={`relative w-full aspect-video bg-gradient-to-br ${gradient} flex flex-col items-center justify-center gap-3`}>
+    <div className={`relative w-full aspect-video bg-gradient-to-br ${gradient} flex flex-col items-center justify-center gap-2`}>
       <span className="text-5xl">{icon}</span>
-      <p className="text-white/80 text-xs font-medium">Video coming soon</p>
+      <p className="text-white/80 text-xs font-semibold">Video coming soon</p>
     </div>
   )
 }
@@ -193,23 +193,20 @@ export default function Portfolio() {
               className={`bg-gradient-to-br ${project.bg} border ${project.border} rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col`}
             >
               <VideoEmbed
-                youtubeId={project.youtubeId}
+                videoUrl={project.videoUrl}
                 gradient={project.gradient}
                 icon={project.icon}
+                title={project.title}
               />
 
               <div className="p-6 flex flex-col flex-grow">
                 <div className="flex items-start gap-3 mb-3">
-                  <div
-                    className={`w-10 h-10 rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center text-lg flex-shrink-0`}
-                  >
+                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center text-lg flex-shrink-0`}>
                     {project.icon}
                   </div>
                   <div className="flex-grow">
                     <h3 className="text-xl font-bold text-slate-800">{project.title}</h3>
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                      {project.category}
-                    </p>
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{project.category}</p>
                   </div>
                 </div>
 
@@ -226,19 +223,14 @@ export default function Portfolio() {
 
                 {project.collaboration && (
                   <div className="mb-4 p-3 bg-white/60 rounded-lg border border-slate-200">
-                    <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                      Collaboration
-                    </p>
+                    <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Collaboration</p>
                     <p className="text-sm font-medium text-slate-700">{project.collaboration}</p>
                   </div>
                 )}
 
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map(tech => (
-                    <span
-                      key={tech}
-                      className={`bg-gradient-to-r ${project.gradient} text-white text-xs font-semibold px-3 py-1 rounded-full`}
-                    >
+                    <span key={tech} className={`bg-gradient-to-r ${project.gradient} text-white text-xs font-semibold px-3 py-1 rounded-full`}>
                       {tech}
                     </span>
                   ))}

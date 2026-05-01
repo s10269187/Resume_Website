@@ -15,13 +15,13 @@ export default function App() {
     <div className="font-poppins">
       <Navbar />
       <Hero />
+      <Portfolio />
       <About />
       <Skills />
       <Experience />
-      <CoCurricular />
       <Education />
+      <CoCurricular />
       <Certificates />
-      <Portfolio />
       <Contact />
       <Footer />
     </div>

@@ -2,11 +2,12 @@ import SectionHeader from './SectionHeader'
 
 const tags = [
   '🇸🇬 Singapore',
-  '📍 Ngee Ann Poly',
+  '📍 Ngee Ann Polytechnic',
   '🎮 Game Dev',
   '📷 Photography',
   '🤺 Fencing',
   '🎨 Digital Design',
+  '🎹 Pianist / Bassist',
 ]
 
 export default function About() {

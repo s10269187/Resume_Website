@@ -1,0 +1,20 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="64" height="64" rx="12" fill="#FFFBF7"/>
+
+  <!-- J in Pink -->
+  <text x="12" y="48" font-family="Poppins, Arial, sans-serif" font-size="40" font-weight="900" fill="#F472B6">J</text>
+
+  <!-- L in Violet -->
+  <text x="32" y="48" font-family="Poppins, Arial, sans-serif" font-size="40" font-weight="900" fill="#A78BFA">L</text>
+
+  <!-- Subtle gradient border -->
+  <rect width="64" height="64" rx="12" fill="none" stroke="url(#grad)" stroke-width="1.5" opacity="0.3"/>
+
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F472B6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

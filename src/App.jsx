@@ -6,6 +6,7 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import CoCurricular from './components/CoCurricular'
 import Education from './components/Education'
+import Certificates from './components/Certificates'
 import Portfolio from './components/Portfolio'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -21,6 +22,7 @@ export default function App() {
       <Projects />
       <CoCurricular />
       <Education />
+      <Certificates />
       <Portfolio />
       <Contact />
       <Footer />

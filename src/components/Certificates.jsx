@@ -34,6 +34,12 @@ const certificates = [
         year: '2026',
         icon: '🎨',
       },
+      {
+        title: 'Figma: Animating Design Prototypes',
+        issuer: 'LinkedIn Learning',
+        year: '2026',
+        icon: '✨',
+      },
     ],
   },
   {

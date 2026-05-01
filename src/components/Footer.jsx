@@ -47,8 +47,7 @@ export default function Footer() {
         <div className="w-full h-px bg-slate-800" />
 
         <p className="text-slate-500 text-sm text-center">
-          © {new Date().getFullYear()} Lee Jia Lu · Built with React & Tailwind CSS
-          <span className="text-pink-400"> ♥</span>
+          © {new Date().getFullYear()} Lee Jia Lu <span className="text-pink-400">♥</span>
         </p>
       </div>
     </footer>

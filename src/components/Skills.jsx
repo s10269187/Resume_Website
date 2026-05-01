@@ -52,6 +52,15 @@ const skillCategories = [
     badge: 'bg-emerald-100 text-emerald-700',
     skills: ['English (Native)', 'Chinese (Native)', 'ASL (Beginner)'],
   },
+  {
+    title: 'Soft Skills',
+    icon: '⭐',
+    color: 'from-rose-400 to-red-500',
+    bg: 'from-rose-50 to-red-50',
+    border: 'border-rose-200',
+    badge: 'bg-rose-100 text-rose-700',
+    skills: ['Creativity', 'Communicative', 'Adaptability', 'Problem-solving', 'Time Management'],
+  },
 ]
 
 export default function Skills() {

@@ -1,5 +1,5 @@
 import SectionHeader from './SectionHeader'
-import { FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa'
+import { FaLinkedin, FaEnvelope, FaPhone, FaGithub } from 'react-icons/fa'
 
 const contactItems = [
   {
@@ -28,6 +28,15 @@ const contactItems = [
     gradient: 'from-blue-400 to-sky-500',
     bg: 'from-blue-50 to-sky-50',
     border: 'border-blue-200',
+  },
+  {
+    icon: <FaGithub className="text-xl" />,
+    label: 'GitHub',
+    value: 'github.com/s10269187',
+    href: 'https://github.com/s10269187',
+    gradient: 'from-slate-600 to-slate-800',
+    bg: 'from-slate-50 to-slate-100',
+    border: 'border-slate-200',
   },
 ]
 

@@ -1,4 +1,4 @@
-import { FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import { FaLinkedin, FaEnvelope, FaGithub } from 'react-icons/fa'
 
 export default function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -40,6 +40,14 @@ export default function Footer() {
             className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-500 hover:text-white transition-all duration-300"
           >
             <FaLinkedin />
+          </a>
+          <a
+            href="https://github.com/s10269187"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-slate-600 hover:text-white transition-all duration-300"
+          >
+            <FaGithub />
           </a>
         </div>
 

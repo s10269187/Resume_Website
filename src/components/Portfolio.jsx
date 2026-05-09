@@ -1,6 +1,6 @@
+import { useState } from 'react'
 import SectionHeader from './SectionHeader'
 
-// Videos hosted on Cloudinary
 const portfolioProjects = [
   {
     id: 1,
@@ -10,8 +10,6 @@ const portfolioProjects = [
     gradient: 'from-red-400 to-orange-400',
     bg: 'from-red-50 to-orange-50',
     border: 'border-red-200',
-    description:
-      'A computer horror game developed in collaboration with the Singapore Police Force (SPF) to raise awareness about crime, specifically theft.',
     details: [
       'Horror game for SPF raising awareness on theft & crime',
       'Built 3D assets in Unity: overhead bridges, street lamps, shopping malls',
@@ -30,8 +28,6 @@ const portfolioProjects = [
     gradient: 'from-purple-400 to-pink-400',
     bg: 'from-purple-50 to-pink-50',
     border: 'border-purple-200',
-    description:
-      'A VR awareness game raising consciousness about Obsessive-Compulsive Disorder (OCD) through interactive mini-games.',
     details: [
       'VR game for IMH raising awareness on OCD through 5 interactive mini-games',
       'Modelled and textured all 3D assets using Autodesk Maya & Substance Painter',
@@ -50,8 +46,6 @@ const portfolioProjects = [
     gradient: 'from-blue-400 to-cyan-400',
     bg: 'from-blue-50 to-cyan-50',
     border: 'border-blue-200',
-    description:
-      'An e-commerce website for a music instrument brand providing a seamless online shopping experience.',
     details: [
       'E-commerce site for a music brand with full browse, cart & checkout flow',
       'Created 3D product models (piano & violin) in Autodesk Maya',
@@ -69,8 +63,6 @@ const portfolioProjects = [
     gradient: 'from-amber-400 to-yellow-400',
     bg: 'from-amber-50 to-yellow-50',
     border: 'border-amber-200',
-    description:
-      "A mobile game engaging users with Singapore's cultural heritage through collecting and crafting traditional snacks.",
     details: [
       'Mobile game teaching Singapore cultural heritage through traditional snack crafting',
       'Built crafting & ingredient-gathering systems in Unity with C#',
@@ -88,8 +80,6 @@ const portfolioProjects = [
     gradient: 'from-indigo-400 to-blue-400',
     bg: 'from-indigo-50 to-blue-50',
     border: 'border-indigo-200',
-    description:
-      'A physical game controller using Makey Makey, adapting the classic two-player game into a multiplayer experience with a custom-built tangible interface.',
     details: [
       'Custom two-player controller built with Makey Makey for a classic browser game',
       'Handcrafted using foam, cardboard, coloured paper & chopsticks',
@@ -107,8 +97,6 @@ const portfolioProjects = [
     gradient: 'from-green-400 to-emerald-400',
     bg: 'from-green-50 to-emerald-50',
     border: 'border-green-200',
-    description:
-      'A cross-platform fitness tracking application designed for both mobile and smartwatch platforms with cohesive UX.',
     details: [
       'Cross-platform Figma prototype spanning mobile app & smartwatch',
       'Mobile: tracks calories, steps, sleep & daily activity',
@@ -126,8 +114,6 @@ const portfolioProjects = [
     gradient: 'from-teal-400 to-green-400',
     bg: 'from-teal-50 to-green-50',
     border: 'border-teal-200',
-    description:
-      'A mobile app applying gamification concepts to encourage sustainable recycling behavior through rewards and challenges.',
     details: [
       'Gamified recycling app designed in Figma to drive sustainable behaviour',
       'Point-based reward system with progress tracking & challenges',
@@ -139,7 +125,7 @@ const portfolioProjects = [
   },
 ]
 
-function VideoEmbed({ videoUrl, gradient, icon, title }) {
+function VideoEmbed({ videoUrl, gradient, icon }) {
   if (videoUrl) {
     return (
       <div className="relative w-full aspect-video bg-black overflow-hidden">
@@ -156,13 +142,64 @@ function VideoEmbed({ videoUrl, gradient, icon, title }) {
   }
   return (
     <div className={`relative w-full aspect-video bg-gradient-to-br ${gradient} flex flex-col items-center justify-center gap-2`}>
-      <span className="text-5xl">{icon}</span>
+      <span className="text-4xl">{icon}</span>
       <p className="text-white/80 text-xs font-semibold">Video coming soon</p>
     </div>
   )
 }
 
+function ProjectCard({ project }) {
+  return (
+    <div className={`bg-gradient-to-br ${project.bg} border ${project.border} rounded-2xl overflow-hidden flex flex-col h-full`}>
+      <VideoEmbed videoUrl={project.videoUrl} gradient={project.gradient} icon={project.icon} />
+      <div className="p-4 flex flex-col flex-grow">
+        <div className="flex items-start gap-2 mb-3">
+          <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${project.gradient} flex items-center justify-center text-base flex-shrink-0`}>
+            {project.icon}
+          </div>
+          <div>
+            <h3 className="text-sm font-bold text-slate-800 leading-tight">{project.title}</h3>
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{project.category}</p>
+          </div>
+        </div>
+
+        <ul className="space-y-1.5 mb-3 flex-grow">
+          {project.details.map((detail, i) => (
+            <li key={i} className="flex items-start gap-1.5 text-xs text-slate-600 leading-relaxed">
+              <span className="text-pink-400 font-bold mt-0.5 flex-shrink-0">•</span>
+              {detail}
+            </li>
+          ))}
+        </ul>
+
+        {project.collaboration && (
+          <div className="mb-3 p-2 bg-white/60 rounded-lg border border-slate-200">
+            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Collab</p>
+            <p className="text-xs font-medium text-slate-700">{project.collaboration}</p>
+          </div>
+        )}
+
+        <div className="flex flex-wrap gap-1.5">
+          {project.technologies.map(tech => (
+            <span key={tech} className={`bg-gradient-to-r ${project.gradient} text-white text-xs font-semibold px-2 py-0.5 rounded-full`}>
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Portfolio() {
+  const [current, setCurrent] = useState(0)
+  const n = portfolioProjects.length
+
+  const prev = () => setCurrent(i => (i - 1 + n) % n)
+  const next = () => setCurrent(i => (i + 1) % n)
+
+  const getProject = offset => portfolioProjects[(current + offset) % n]
+
   return (
     <section id="portfolio" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
@@ -172,58 +209,56 @@ export default function Portfolio() {
           gradient="indigo"
         />
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {portfolioProjects.map(project => (
-            <div
-              key={project.id}
-              className={`bg-gradient-to-br ${project.bg} border ${project.border} rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col`}
+        <div>
+          {/* Top border */}
+          <div className="h-2 bg-slate-900 rounded-full mb-6" />
+
+          <div className="flex items-stretch gap-3">
+            {/* Left arrow */}
+            <button
+              onClick={prev}
+              aria-label="Previous"
+              className="flex-shrink-0 w-12 bg-slate-700 hover:bg-slate-900 text-white rounded-lg flex items-center justify-center text-xl transition-colors duration-200 select-none"
             >
-              <VideoEmbed
-                videoUrl={project.videoUrl}
-                gradient={project.gradient}
-                icon={project.icon}
-                title={project.title}
-              />
+              ◀
+            </button>
 
-              <div className="p-6 flex flex-col flex-grow">
-                <div className="flex items-start gap-3 mb-3">
-                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center text-lg flex-shrink-0`}>
-                    {project.icon}
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="text-xl font-bold text-slate-800">{project.title}</h3>
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{project.category}</p>
-                  </div>
-                </div>
-
-                <p className="text-slate-600 text-sm leading-relaxed mb-4">{project.description}</p>
-
-                <ul className="space-y-1.5 mb-4 flex-grow">
-                  {project.details.map((detail, i) => (
-                    <li key={i} className="flex items-start gap-2 text-xs text-slate-600">
-                      <span className="text-pink-400 font-bold mt-0.5">•</span>
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-
-                {project.collaboration && (
-                  <div className="mb-4 p-3 bg-white/60 rounded-lg border border-slate-200">
-                    <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Collaboration</p>
-                    <p className="text-sm font-medium text-slate-700">{project.collaboration}</p>
-                  </div>
-                )}
-
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map(tech => (
-                    <span key={tech} className={`bg-gradient-to-r ${project.gradient} text-white text-xs font-semibold px-3 py-1 rounded-full`}>
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+            {/* Cards — 1 on mobile, 2 on sm, 3 on lg */}
+            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 min-w-0">
+              <ProjectCard project={getProject(0)} />
+              <div className="hidden sm:flex lg:flex">
+                <ProjectCard project={getProject(1)} />
+              </div>
+              <div className="hidden lg:flex">
+                <ProjectCard project={getProject(2)} />
               </div>
             </div>
-          ))}
+
+            {/* Right arrow */}
+            <button
+              onClick={next}
+              aria-label="Next"
+              className="flex-shrink-0 w-12 bg-slate-700 hover:bg-slate-900 text-white rounded-lg flex items-center justify-center text-xl transition-colors duration-200 select-none"
+            >
+              ▶
+            </button>
+          </div>
+
+          {/* Bottom border */}
+          <div className="h-2 bg-slate-900 rounded-full mt-6" />
+
+          {/* Dot indicators */}
+          <div className="flex justify-center gap-2 mt-6">
+            {portfolioProjects.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === current ? 'w-6 bg-indigo-400' : 'w-2 bg-slate-300 hover:bg-slate-400'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

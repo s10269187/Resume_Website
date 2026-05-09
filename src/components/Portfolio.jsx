@@ -106,6 +106,7 @@ const portfolioProjects = [
     ],
     technologies: ['Figma', 'UI/UX Design', 'Mobile Design', 'Wearable Design'],
     videoUrl: 'https://res.cloudinary.com/druqtalox/video/upload/v1777624105/portfolio/fitness-tracker.mp4',
+    portrait: true,
   },
   {
     id: 7,
@@ -123,6 +124,7 @@ const portfolioProjects = [
     ],
     technologies: ['Figma', 'Gamification', 'UI/UX Design', 'Mobile App'],
     videoUrl: 'https://res.cloudinary.com/druqtalox/video/upload/v1777625048/portfolio/recycling-app.mp4',
+    portrait: true,
   },
 ]
 

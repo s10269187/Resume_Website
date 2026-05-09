@@ -238,8 +238,6 @@ export default function Portfolio() {
           gradient="indigo"
         />
 
-        {/* Top border */}
-        <div className="h-2 bg-slate-900 rounded-full mb-8" />
 
         <div className="flex items-stretch gap-4">
           {/* Left arrow */}
@@ -285,8 +283,6 @@ export default function Portfolio() {
           </button>
         </div>
 
-        {/* Bottom border */}
-        <div className="h-2 bg-slate-900 rounded-full mt-8" />
 
         {/* Page indicator */}
         <div className="flex items-center justify-center gap-4 mt-6">

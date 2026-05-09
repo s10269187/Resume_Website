@@ -135,7 +135,7 @@ const pages = [
 function VideoEmbed({ videoUrl, gradient, icon }) {
   if (videoUrl) {
     return (
-      <div className="relative w-full aspect-video bg-black overflow-hidden">
+      <div className="relative w-full aspect-[4/3] bg-black overflow-hidden">
         <video
           controls
           preload="metadata"
@@ -148,7 +148,7 @@ function VideoEmbed({ videoUrl, gradient, icon }) {
     )
   }
   return (
-    <div className={`relative w-full aspect-video bg-gradient-to-br ${gradient} flex flex-col items-center justify-center gap-2`}>
+    <div className={`relative w-full aspect-[4/3] bg-gradient-to-br ${gradient} flex flex-col items-center justify-center gap-2`}>
       <span className="text-5xl">{icon}</span>
       <p className="text-white/80 text-xs font-semibold">Video coming soon</p>
     </div>
@@ -162,7 +162,7 @@ function ProjectCard({ project }) {
     >
       <VideoEmbed videoUrl={project.videoUrl} gradient={project.gradient} icon={project.icon} />
 
-      <div className="p-5 flex flex-col flex-grow">
+      <div className="p-6 flex flex-col flex-grow">
         {/* Title row */}
         <div className="flex items-start gap-3 mb-3">
           <div
@@ -171,7 +171,7 @@ function ProjectCard({ project }) {
             {project.icon}
           </div>
           <div>
-            <h3 className="text-base font-bold text-slate-800 leading-snug">{project.title}</h3>
+            <h3 className="text-lg font-bold text-slate-800 leading-snug">{project.title}</h3>
             <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{project.category}</p>
           </div>
         </div>
@@ -231,7 +231,7 @@ export default function Portfolio() {
 
   return (
     <section id="portfolio" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-8">
         <SectionHeader
           title="Portfolio"
           subtitle="A look at my past works and projects"

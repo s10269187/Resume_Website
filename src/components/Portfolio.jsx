@@ -54,6 +54,7 @@ const portfolioProjects = [
     ],
     technologies: ['Web Development', 'Autodesk Maya', 'Figma', 'E-Commerce'],
     videoUrl: 'https://res.cloudinary.com/druqtalox/video/upload/v1777625091/portfolio/april-sonata.mp4',
+    portrait: true,
   },
   {
     id: 4,
@@ -132,10 +133,10 @@ const pages = [
   portfolioProjects.slice(6, 7),
 ]
 
-function VideoEmbed({ videoUrl, gradient, icon }) {
+function VideoEmbed({ videoUrl, gradient, icon, portrait }) {
   if (videoUrl) {
     return (
-      <div className="relative w-full aspect-[4/3] bg-black overflow-hidden">
+      <div className={`relative w-full bg-black overflow-hidden ${portrait ? 'aspect-[9/16]' : 'aspect-[4/3]'}`}>
         <video
           controls
           preload="metadata"
@@ -160,7 +161,7 @@ function ProjectCard({ project }) {
     <div
       className={`bg-gradient-to-br ${project.bg} border ${project.border} rounded-2xl overflow-hidden flex flex-col h-full shadow-sm hover:shadow-xl transition-shadow duration-300`}
     >
-      <VideoEmbed videoUrl={project.videoUrl} gradient={project.gradient} icon={project.icon} />
+      <VideoEmbed videoUrl={project.videoUrl} gradient={project.gradient} icon={project.icon} portrait={project.portrait} />
 
       <div className="p-6 flex flex-col flex-grow">
         {/* Title row */}

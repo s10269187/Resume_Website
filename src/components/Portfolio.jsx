@@ -133,14 +133,20 @@ const pages = [
 ]
 
 function VideoEmbed({ videoUrl, gradient, icon }) {
+  const [portrait, setPortrait] = useState(false)
+
   if (videoUrl) {
     return (
-      <div className="relative w-full aspect-[4/3] bg-black overflow-hidden">
+      <div className={`relative w-full bg-black overflow-hidden ${portrait ? 'aspect-[9/16]' : 'aspect-[4/3]'}`}>
         <video
           controls
           preload="metadata"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
           controlsList="nodownload"
+          onLoadedMetadata={e => {
+            const v = e.currentTarget
+            setPortrait(v.videoHeight > v.videoWidth)
+          }}
         >
           <source src={videoUrl} type="video/mp4" />
         </video>

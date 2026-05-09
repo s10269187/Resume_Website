@@ -125,6 +125,13 @@ const portfolioProjects = [
   },
 ]
 
+// Fixed pages: 3 – 3 – 1
+const pages = [
+  portfolioProjects.slice(0, 3),
+  portfolioProjects.slice(3, 6),
+  portfolioProjects.slice(6, 7),
+]
+
 function VideoEmbed({ videoUrl, gradient, icon }) {
   if (videoUrl) {
     return (
@@ -142,7 +149,7 @@ function VideoEmbed({ videoUrl, gradient, icon }) {
   }
   return (
     <div className={`relative w-full aspect-video bg-gradient-to-br ${gradient} flex flex-col items-center justify-center gap-2`}>
-      <span className="text-4xl">{icon}</span>
+      <span className="text-5xl">{icon}</span>
       <p className="text-white/80 text-xs font-semibold">Video coming soon</p>
     </div>
   )
@@ -150,38 +157,50 @@ function VideoEmbed({ videoUrl, gradient, icon }) {
 
 function ProjectCard({ project }) {
   return (
-    <div className={`bg-gradient-to-br ${project.bg} border ${project.border} rounded-2xl overflow-hidden flex flex-col h-full`}>
+    <div
+      className={`bg-gradient-to-br ${project.bg} border ${project.border} rounded-2xl overflow-hidden flex flex-col h-full shadow-sm hover:shadow-xl transition-shadow duration-300`}
+    >
       <VideoEmbed videoUrl={project.videoUrl} gradient={project.gradient} icon={project.icon} />
-      <div className="p-4 flex flex-col flex-grow">
-        <div className="flex items-start gap-2 mb-3">
-          <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${project.gradient} flex items-center justify-center text-base flex-shrink-0`}>
+
+      <div className="p-5 flex flex-col flex-grow">
+        {/* Title row */}
+        <div className="flex items-start gap-3 mb-3">
+          <div
+            className={`w-10 h-10 rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center text-lg flex-shrink-0 shadow`}
+          >
             {project.icon}
           </div>
           <div>
-            <h3 className="text-sm font-bold text-slate-800 leading-tight">{project.title}</h3>
+            <h3 className="text-base font-bold text-slate-800 leading-snug">{project.title}</h3>
             <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{project.category}</p>
           </div>
         </div>
 
-        <ul className="space-y-1.5 mb-3 flex-grow">
+        {/* Bullet points */}
+        <ul className="space-y-1.5 mb-4 flex-grow">
           {project.details.map((detail, i) => (
-            <li key={i} className="flex items-start gap-1.5 text-xs text-slate-600 leading-relaxed">
+            <li key={i} className="flex items-start gap-2 text-xs text-slate-600 leading-relaxed">
               <span className="text-pink-400 font-bold mt-0.5 flex-shrink-0">•</span>
               {detail}
             </li>
           ))}
         </ul>
 
+        {/* Collaboration */}
         {project.collaboration && (
-          <div className="mb-3 p-2 bg-white/60 rounded-lg border border-slate-200">
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Collab</p>
-            <p className="text-xs font-medium text-slate-700">{project.collaboration}</p>
+          <div className="mb-3 p-2.5 bg-white/70 rounded-xl border border-slate-200">
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-0.5">Collaboration</p>
+            <p className="text-xs font-semibold text-slate-700">{project.collaboration}</p>
           </div>
         )}
 
+        {/* Tech tags */}
         <div className="flex flex-wrap gap-1.5">
           {project.technologies.map(tech => (
-            <span key={tech} className={`bg-gradient-to-r ${project.gradient} text-white text-xs font-semibold px-2 py-0.5 rounded-full`}>
+            <span
+              key={tech}
+              className={`bg-gradient-to-r ${project.gradient} text-white text-xs font-semibold px-2.5 py-0.5 rounded-full`}
+            >
               {tech}
             </span>
           ))}
@@ -192,73 +211,99 @@ function ProjectCard({ project }) {
 }
 
 export default function Portfolio() {
-  const [current, setCurrent] = useState(0)
-  const n = portfolioProjects.length
+  const [pageIndex, setPageIndex] = useState(0)
+  const [direction, setDirection] = useState('right')
+  const [animKey, setAnimKey] = useState(0)
 
-  const prev = () => setCurrent(i => (i - 1 + n) % n)
-  const next = () => setCurrent(i => (i + 1) % n)
+  const totalPages = pages.length
 
-  const getProject = offset => portfolioProjects[(current + offset) % n]
+  const goTo = (newIndex, dir) => {
+    setDirection(dir)
+    setPageIndex(newIndex)
+    setAnimKey(k => k + 1)
+  }
+
+  const prev = () => goTo((pageIndex - 1 + totalPages) % totalPages, 'left')
+  const next = () => goTo((pageIndex + 1) % totalPages, 'right')
+
+  const currentProjects = pages[pageIndex]
+  const isSingle = currentProjects.length === 1
 
   return (
     <section id="portfolio" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <SectionHeader
           title="Portfolio"
           subtitle="A look at my past works and projects"
           gradient="indigo"
         />
 
-        <div>
-          {/* Top border */}
-          <div className="h-2 bg-slate-900 rounded-full mb-6" />
+        {/* Top border */}
+        <div className="h-2 bg-slate-900 rounded-full mb-8" />
 
-          <div className="flex items-stretch gap-3">
-            {/* Left arrow */}
-            <button
-              onClick={prev}
-              aria-label="Previous"
-              className="flex-shrink-0 w-12 bg-slate-700 hover:bg-slate-900 text-white rounded-lg flex items-center justify-center text-xl transition-colors duration-200 select-none"
+        <div className="flex items-stretch gap-4">
+          {/* Left arrow */}
+          <button
+            onClick={prev}
+            aria-label="Previous"
+            className="flex-shrink-0 w-14 bg-slate-800 hover:bg-slate-600 active:scale-95 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg transition-all duration-200 select-none"
+          >
+            ‹
+          </button>
+
+          {/* Animated cards area */}
+          <div className="flex-1 overflow-hidden min-w-0">
+            <div
+              key={animKey}
+              className={direction === 'right' ? 'slide-in-right' : 'slide-in-left'}
             >
-              ◀
-            </button>
-
-            {/* Cards — 1 on mobile, 2 on sm, 3 on lg */}
-            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 min-w-0">
-              <ProjectCard project={getProject(0)} />
-              <div className="hidden sm:flex lg:flex">
-                <ProjectCard project={getProject(1)} />
-              </div>
-              <div className="hidden lg:flex">
-                <ProjectCard project={getProject(2)} />
-              </div>
+              {isSingle ? (
+                /* Single card — centred, capped width */
+                <div className="flex justify-center">
+                  <div className="w-full max-w-md">
+                    <ProjectCard project={currentProjects[0]} />
+                  </div>
+                </div>
+              ) : (
+                /* Three-card grid */
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {currentProjects.map(project => (
+                    <ProjectCard key={project.id} project={project} />
+                  ))}
+                </div>
+              )}
             </div>
+          </div>
 
-            {/* Right arrow */}
+          {/* Right arrow */}
+          <button
+            onClick={next}
+            aria-label="Next"
+            className="flex-shrink-0 w-14 bg-slate-800 hover:bg-slate-600 active:scale-95 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg transition-all duration-200 select-none"
+          >
+            ›
+          </button>
+        </div>
+
+        {/* Bottom border */}
+        <div className="h-2 bg-slate-900 rounded-full mt-8" />
+
+        {/* Page indicator */}
+        <div className="flex items-center justify-center gap-4 mt-6">
+          {pages.map((_, i) => (
             <button
-              onClick={next}
-              aria-label="Next"
-              className="flex-shrink-0 w-12 bg-slate-700 hover:bg-slate-900 text-white rounded-lg flex items-center justify-center text-xl transition-colors duration-200 select-none"
-            >
-              ▶
-            </button>
-          </div>
-
-          {/* Bottom border */}
-          <div className="h-2 bg-slate-900 rounded-full mt-6" />
-
-          {/* Dot indicators */}
-          <div className="flex justify-center gap-2 mt-6">
-            {portfolioProjects.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === current ? 'w-6 bg-indigo-400' : 'w-2 bg-slate-300 hover:bg-slate-400'
-                }`}
-              />
-            ))}
-          </div>
+              key={i}
+              onClick={() => goTo(i, i > pageIndex ? 'right' : 'left')}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                i === pageIndex
+                  ? 'w-8 bg-indigo-500'
+                  : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+              }`}
+            />
+          ))}
+          <span className="text-xs text-slate-400 font-semibold ml-2">
+            {pageIndex + 1} / {totalPages}
+          </span>
         </div>
       </div>
     </section>

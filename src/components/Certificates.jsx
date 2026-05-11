@@ -101,11 +101,11 @@ export default function Certificates() {
           gradient="emerald"
         />
 
-        <div className="space-y-12">
+        <div className="space-y-8">
           {certificates.map((certGroup, groupIdx) => (
             <div key={groupIdx}>
               {/* Category header */}
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-5">
                 <div
                   className={`w-12 h-12 rounded-xl bg-gradient-to-br ${certGroup.gradient} flex items-center justify-center text-2xl shadow-md`}
                 >
@@ -119,25 +119,25 @@ export default function Certificates() {
               </div>
 
               {/* Certificates grid */}
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {certGroup.items.map((cert, idx) => (
                   <div
                     key={idx}
-                    className={`bg-gradient-to-br ${certGroup.bg} border ${certGroup.border} rounded-2xl p-5 hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
+                    className={`bg-gradient-to-br ${certGroup.bg} border ${certGroup.border} rounded-xl p-4 hover:shadow-md transition-all duration-300 hover:-translate-y-1`}
                   >
                     {/* Header with icon and year */}
-                    <div className="flex items-start justify-between gap-2 mb-3">
-                      <div className="text-3xl">{cert.icon}</div>
-                      <span className={`${certGroup.badgeColor} text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap`}>
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <div className="text-2xl">{cert.icon}</div>
+                      <span className={`${certGroup.badgeColor} text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap`}>
                         {cert.year}
                       </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-lg font-bold text-slate-800 mb-1">{cert.title}</h3>
+                    <h3 className="text-sm font-bold text-slate-800 mb-1 leading-snug">{cert.title}</h3>
 
                     {/* Issuer */}
-                    <p className={`text-sm font-semibold bg-gradient-to-r ${certGroup.gradient} bg-clip-text text-transparent mb-2`}>
+                    <p className={`text-xs font-semibold bg-gradient-to-r ${certGroup.gradient} bg-clip-text text-transparent mb-1`}>
                       {cert.issuer}
                     </p>
 

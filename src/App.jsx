@@ -20,8 +20,8 @@ export default function App() {
       <Skills />
       <Experience />
       <Education />
-      <CoCurricular />
       <Certificates />
+      <CoCurricular />
       <Contact />
       <Footer />
     </div>

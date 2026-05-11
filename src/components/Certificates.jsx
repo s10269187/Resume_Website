@@ -40,6 +40,24 @@ const certificates = [
         year: '2026',
         icon: '✨',
       },
+      {
+        title: 'Principles of UX Design',
+        issuer: 'LinkedIn Learning',
+        year: '2026',
+        icon: '🧩',
+      },
+      {
+        title: 'HTML, CSS, and JavaScript: Building the Web',
+        issuer: 'LinkedIn Learning',
+        year: '2026',
+        icon: '🔧',
+      },
+      {
+        title: 'Figma Essential Training: The Basics',
+        issuer: 'LinkedIn Learning',
+        year: '2026',
+        icon: '🖼️',
+      },
     ],
   },
   {

@@ -23,7 +23,7 @@ const education = [
     gradient: 'from-blue-400 to-sky-500',
     bg: 'from-blue-50 to-sky-50',
     border: 'border-blue-200',
-    highlights: ['Good Progress Award (2023)', 'EAGLES Award (2023)'],
+    highlights: ['Good Progress Award (2023)', 'Edusave Award for Achievement, Good Leadership and Service (EAGLES) (2023)'],
   },
 ]
 
@@ -32,7 +32,7 @@ const awards = [
   { icon: '🥈', text: 'NTU Fencing Challenge — Silver', year: '2025' },
   { icon: '🥉', text: 'NUS Fencing Challenge — Bronze', year: '2025' },
   { icon: '🏆', text: "Director's List", year: 'AY24/25' },
-  { icon: '🦅', text: 'EAGLES Award', year: '2023' },
+  { icon: '🦅', text: 'Edusave Award for Achievement, Good Leadership and Service (EAGLES)', year: '2023' },
   { icon: '📈', text: 'Good Progress Award', year: '2023' },
 ]
 

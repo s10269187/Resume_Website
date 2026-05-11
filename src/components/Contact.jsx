@@ -90,33 +90,80 @@ export default function Contact() {
             </a>
           </div>
 
-          {/* Reference */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center text-slate-600 font-bold text-sm">
-                RQ
+          {/* Referrals */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-bold text-slate-700">Referrals</h3>
+
+            {/* Ryan Qin */}
+            <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center text-slate-600 font-bold text-sm flex-shrink-0">
+                  RQ
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-bold text-slate-800">Mr Ryan Qin</h4>
+                  <p className="text-xs text-slate-400">Lecturer / Advisor · Ngee Ann Polytechnic</p>
+                </div>
+                <span className="bg-slate-100 text-slate-500 text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0">
+                  Referral
+                </span>
               </div>
-              <div>
-                <h4 className="font-bold text-slate-800">Mr Ryan Qin</h4>
-                <p className="text-xs text-slate-400">Lecturer · Ngee Ann Polytechnic</p>
+              <div className="flex flex-wrap gap-3">
+                <a href="tel:+6564606251" className="flex items-center gap-2 text-sm text-slate-600 hover:text-pink-500 transition-colors">
+                  <FaPhone className="text-xs" /> 6460 6251
+                </a>
+                <a href="mailto:QIN_Jiming@np.edu.sg" className="flex items-center gap-2 text-sm text-slate-600 hover:text-pink-500 transition-colors">
+                  <FaEnvelope className="text-xs" /> QIN_Jiming@np.edu.sg
+                </a>
               </div>
-              <span className="ml-auto bg-slate-100 text-slate-500 text-xs font-semibold px-3 py-1 rounded-full">
-                Referral
-              </span>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="tel:+6564606251"
-                className="flex items-center gap-2 text-sm text-slate-600 hover:text-pink-500 transition-colors"
-              >
-                <FaPhone className="text-xs" /> 6460 6251
-              </a>
-              <a
-                href="mailto:QIN_Jiming@np.edu.sg"
-                className="flex items-center gap-2 text-sm text-slate-600 hover:text-pink-500 transition-colors"
-              >
-                <FaEnvelope className="text-xs" /> QIN_Jiming@np.edu.sg
-              </a>
+
+            {/* Christina Mok */}
+            <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center text-slate-600 font-bold text-sm flex-shrink-0">
+                  CM
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-bold text-slate-800">Ms Christina Mok</h4>
+                  <p className="text-xs text-slate-400">Lecturer · Ngee Ann Polytechnic</p>
+                </div>
+                <span className="bg-slate-100 text-slate-500 text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0">
+                  Referral
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <a href="tel:+6564608249" className="flex items-center gap-2 text-sm text-slate-600 hover:text-pink-500 transition-colors">
+                  <FaPhone className="text-xs" /> 6460 8249
+                </a>
+                <a href="mailto:Christina_MOK@np.edu.sg" className="flex items-center gap-2 text-sm text-slate-600 hover:text-pink-500 transition-colors">
+                  <FaEnvelope className="text-xs" /> Christina_MOK@np.edu.sg
+                </a>
+              </div>
+            </div>
+
+            {/* Joey Chew */}
+            <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center text-slate-600 font-bold text-sm flex-shrink-0">
+                  JC
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-bold text-slate-800">Ms Joey Chew</h4>
+                  <p className="text-xs text-slate-400">Senior Manager · Ngee Ann Polytechnic</p>
+                </div>
+                <span className="bg-slate-100 text-slate-500 text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0">
+                  Referral
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <a href="tel:+6564606874" className="flex items-center gap-2 text-sm text-slate-600 hover:text-pink-500 transition-colors">
+                  <FaPhone className="text-xs" /> 6460 6874
+                </a>
+                <a href="mailto:Joey_CHEW@np.edu.sg" className="flex items-center gap-2 text-sm text-slate-600 hover:text-pink-500 transition-colors">
+                  <FaEnvelope className="text-xs" /> Joey_CHEW@np.edu.sg
+                </a>
+              </div>
             </div>
           </div>
         </div>

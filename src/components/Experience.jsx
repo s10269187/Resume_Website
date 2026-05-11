@@ -17,21 +17,6 @@ const experiences = [
     skills: ['Photo Editing', 'Adobe Photoshop', 'Canva', 'Attention to Detail', 'Stock Management'],
   },
   {
-    company: 'Hai Di Lao Hot Pot',
-    role: 'Waitress / Service Staff',
-    period: 'Dec 2023 – Dec 2025',
-    color: 'from-amber-400 to-orange-400',
-    dot: 'bg-amber-400',
-    ring: 'ring-amber-200',
-    icon: '🍜',
-    points: [
-      'Delivered attentive customer service by managing orders, serving food, and handling customer requests in a fast-paced environment.',
-      'Communicated effectively with customers, colleagues, and kitchen staff to ensure accurate and timely order fulfilment.',
-      'Maintained cleanliness and organisation of dining areas while upholding hygiene and service standards.',
-    ],
-    skills: ['Customer Service', 'Communication', 'Teamwork', 'Time Management', 'Multitasking'],
-  },
-  {
     company: 'Shopee',
     role: 'Shopee Live Affiliate',
     period: 'Sept 2025 – Present',
@@ -46,6 +31,21 @@ const experiences = [
       'Analysed audience engagement and adapted presentation styles to improve performance.',
     ],
     skills: ['Public Speaking', 'Persuasion', 'Live Streaming', 'Sales', 'Analytics'],
+  },
+  {
+    company: 'Hai Di Lao Hot Pot',
+    role: 'Waitress / Service Staff',
+    period: 'Dec 2023 – Dec 2025',
+    color: 'from-amber-400 to-orange-400',
+    dot: 'bg-amber-400',
+    ring: 'ring-amber-200',
+    icon: '🍜',
+    points: [
+      'Delivered attentive customer service by managing orders, serving food, and handling customer requests in a fast-paced environment.',
+      'Communicated effectively with customers, colleagues, and kitchen staff to ensure accurate and timely order fulfilment.',
+      'Maintained cleanliness and organisation of dining areas while upholding hygiene and service standards.',
+    ],
+    skills: ['Customer Service', 'Communication', 'Teamwork', 'Time Management', 'Multitasking'],
   },
 ]
 
